@@ -1,9 +1,8 @@
 server{
     listen 80;
-    listen 443 ssl;
     server_name nicetoday.ru;
 
     location / {
-        proxy_pass https://game_server:3000;
+        proxy_pass http://game_server:3000;
     }
 }

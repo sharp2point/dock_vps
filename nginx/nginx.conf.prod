@@ -1,10 +1,7 @@
 server{
+    listen 80;
     listen 443 ssl;
     server_name nicetoday.ru;
-    ssl_certificate     /etc/ssl/certs/ca-certificates.crt;
-    ssl_certificate_key /etc/ssl/certs/ca-certificates.key;
-    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-    ssl_ciphers         HIGH:!aNULL:!MD5;
 
     location / {
         proxy_pass https://game_server:3000;

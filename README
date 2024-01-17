@@ -1,0 +1,5 @@
+*** TEST DOCKER + FASTIFY + NGINX ***
+** Docker-compose struct: **
+services:
+    game_server
+    nginx

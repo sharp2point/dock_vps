@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  game_server:
+    build: ./srv
+    container_name: game_server
+    command: npm run start
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    environment:
+      - PORT=3000
+      - HOST=0.0.0.0
+    volumes:
+      - /public:/public
+  
+  nginx:
+    image: nginx:stable-alpine
+    container_name: game_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf.prod:/etc/nginx/conf.d/nginx.conf 
+    depends_on:
+      - game_server
